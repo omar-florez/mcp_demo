@@ -76,7 +76,7 @@ The following diagram illustrates how the task flows from user to agents through
      |                 |                  |                  |
      |<------------------------------------------------------|
      |            Streams live result via SSE               |
-<pre> ```text
+ ``` </pre>
 
 **Run:**
 ```bash

@@ -48,6 +48,35 @@ curl "http://localhost:8000/sse?task=3*(5+1)"
 **Description:**  
 Full MCP pipeline with `PlannerAgent`, `ExecutorAgent`, and Wikipedia integration. The planner proposes a summary retrieval task, and the executor runs it via the Wikipedia REST API after validating the plan.
 
+
+**MCP Agent Coordination Diagram**
+The following diagram illustrates how the task flows from user to agents through the Model Context Protocol:
+
++---------+        +--------+        +---------+        +--------+
+|  User   | -----> | Planner| -----> | Critic  | -----> | Executor|
++---------+        +--------+        +---------+        +--------+
+     |                 |                  |                  |
+     |  Task:          |                  |                  |
+     |  "Alan_Turing"  |                  |                  |
+     |                 |     Plan:        |                  |
+     |                 |  "Fetch from     |                  |
+     |                 |   Wikipedia +    |                  |
+     |                 |   validate bias" |                  |
+     |                 | ---------------->                  |
+     |                 |                  | Validates plan   |
+     |                 |                  | ---------------->|
+     |                 |                  |                  |
+     |                 |                  |     Executes     |
+     |                 |                  |   Wikipedia API  |
+     |                 |                  |        |         |
+     |                 |                  |        V         |
+     |                 |                  |   Tool Output    |
+     |                 |                  |  "Alan Turing was..." |
+     |                 |                  |                  |
+     |<------------------------------------------------------|
+     |            Streams live result via SSE               |
+
+
 **Run:**
 ```bash
 python sse_server_planner_executor_wikipedia.py

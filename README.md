@@ -52,6 +52,7 @@ Full MCP pipeline with `PlannerAgent`, `ExecutorAgent`, and Wikipedia integratio
 **MCP Agent Coordination Diagram**
 The following diagram illustrates how the task flows from user to agents through the Model Context Protocol:
 
+<pre> ```text
 +---------+        +--------+        +---------+        +--------+
 |  User   | -----> | Planner| -----> | Critic  | -----> | Executor|
 +---------+        +--------+        +---------+        +--------+
@@ -75,7 +76,7 @@ The following diagram illustrates how the task flows from user to agents through
      |                 |                  |                  |
      |<------------------------------------------------------|
      |            Streams live result via SSE               |
-
+<pre> ```text
 
 **Run:**
 ```bash
